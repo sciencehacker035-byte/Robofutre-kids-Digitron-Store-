@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>RoboFuture Kids | AI & Robotics Learning Guide</title>
+  <meta
+    name="description"
+    content="Introduce your child to AI, robotics, electronics and STEM with RoboFuture Kids, including educational bonus resources."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #060914;
+      --surface: #10182d;
+      --surface-2: #151f38;
+      --text: #f8faff;
+      --muted: #a4b0c8;
+      --muted-2: #7785a3;
+      --line: rgba(255,255,255,.10);
+      --blue: #8eacff;
+      --cyan: #5be5ff;
+      --purple: #b08cff;
+      --green: #63e6a8;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      overflow-x: hidden;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 0% 0%, rgba(77,110,225,.20), transparent 28%),
+        radial-gradient(circle at 100% 15%, rgba(157,103,255,.13), transparent 26%),
+        var(--bg);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 90px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 13px;
+      border: 1px solid rgba(113,155,255,.25);
+      border-radius: 999px;
+      background: rgba(113,155,255,.09);
+      color: #b9caff;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 14px var(--cyan);
+    }
+
+    h1,
+    h2,
+    h3,
+    .logo {
+      font-family: "Space Grotesk", sans-serif;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6.5vw, 78px);
+      line-height: 1.02;
+      letter-spacing: -.065em;
+    }
+
+    h2 {
+      font-size: clamp(32px, 4.5vw, 54px);
+      line-height: 1.06;
+      letter-spacing: -.05em;
+    }
+
+    h3 {
+      line-height: 1.2;
+    }
+
+    .gradient {
+      background: linear-gradient(100deg, #fff 5%, #a9c2ff 42%, #65e9ff 95%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .gradient-purple {
+      background: linear-gradient(100deg, #fff, #c2aaff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      background: rgba(6,9,20,.76);
+      backdrop-filter: blur(20px);
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -.05em;
+    }
+
+    .logo-icon {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      color: #07101e;
+      background: linear-gradient(135deg, #a8bdff, #5be5ff);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .nav-right a {
+      color: #aebbd5;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .nav-button {
+      padding: 10px 17px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 999px;
+    }
+
+    .hero {
+      padding: 92px 0 75px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 65px;
+    }
+
+    .hero-content h1 {
+      margin-top: 23px;
+    }
+
+    .hero-description {
+      max-width: 610px;
+      margin: 25px 0 30px;
+      color: #b2bfd7;
+      font-size: 17px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 55px;
+      padding: 0 24px;
+      border-radius: 14px;
+      font-size: 14px;
+      font-weight: 900;
+      transition: .25s ease;
+    }
+
+    .btn-primary {
+      color: #06101c;
+      background: linear-gradient(110deg, #a7bcff, #5be5ff);
+      box-shadow: 0 15px 35px rgba(91,229,255,.13);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 42px rgba(91,229,255,.24);
+    }
+
+    .btn-secondary {
+      color: #e7edff;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.035);
+    }
+
+    .hero-note {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 24px;
+      color: #8291ae;
+      font-size: 11px;
+    }
+
+    .check {
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    /* Main Product Image Space */
+    .product-image-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 540px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+      border: 1px solid rgba(126,159,255,.24);
+      border-radius: 32px;
+      background:
+        radial-gradient(circle at 80% 10%, rgba(91,229,255,.14), transparent 30%),
+        linear-gradient(145deg, #172746, #0b1122 72%);
+      box-shadow: 0 30px 90px rgba(0,0,0,.28);
+    }
+
+    .product-image-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: .25;
+      background-image:
+        linear-gradient(rgba(145,175,255,.13) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(145,175,255,.13) 1px, transparent 1px);
+      background-size: 32px 32px;
+      mask-image: linear-gradient(to bottom, black, transparent 90%);
+    }
+
+    .product-image-card img {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 390px;
+      max-height: 480px;
+      object-fit: contain;
+      border-radius: 18px;
+      filter: drop-shadow(0 25px 35px rgba(0,0,0,.45));
+    }
+
+    .image-placeholder-label {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      z-index: 3;
+      padding: 8px 11px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 999px;
+      background: rgba(0,0,0,.28);
+      color: #a8b8d8;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .image-bottom-label {
+      position: absolute;
+      left: 25px;
+      right: 25px;
+      bottom: 24px;
+      z-index: 3;
+      color: #dbe6ff;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .value-strip {
+      padding: 22px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+    }
+
+    .value-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .value-icon {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      flex: 0 0 auto;
+      border-radius: 14px;
+      background: rgba(113,155,255,.11);
+      font-size: 19px;
+    }
+
+    .value-item strong {
+      display: block;
+      font-size: 13px;
+    }
+
+    .value-item span {
+      display: block;
+      margin-top: 2px;
+      color: #7f8daa;
+      font-size: 11px;
+    }
+
+    .section-heading {
+      max-width: 730px;
+      margin-bottom: 42px;
+    }
+
+    .section-heading h2 {
+      margin-top: 18px;
+    }
+
+    .section-heading p {
+      margin-top: 17px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 17px;
+    }
+
+    .benefit {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: linear-gradient(145deg, rgba(21,32,59,.82), rgba(10,16,31,.72));
+      transition: .25s ease;
+    }
+
+    .benefit:hover {
+      transform: translateY(-5px);
+      border-color: rgba(113,155,255,.42);
+    }
+
+    .benefit-icon {
+      display: grid;
+      place-items: center;
+      width: 51px;
+      height: 51px;
+      margin-bottom: 21px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(113,155,255,.20), rgba(91,229,255,.06));
+      font-size: 24px;
+    }
+
+    .benefit h3 {
+      font-size: 19px;
+    }
+
+    .benefit p {
+      margin-top: 11px;
+      color: #92a0bb;
+      font-size: 13px;
+    }
+
+    .topics-section {
+      background: linear-gradient(180deg, transparent, rgba(15,28,54,.42), transparent);
+    }
+
+    .topics-layout {
+      display: grid;
+      grid-template-columns: .86fr 1.14fr;
+      gap: 58px;
+      align-items: center;
+    }
+
+    .topics-copy p {
+      margin: 18px 0 26px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .topics-list {
+      display: grid;
+      gap: 11px;
+    }
+
+    .topic {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 15px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255,255,255,.025);
+      color: #dce5fb;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .topic-check {
+      display: grid;
+      place-items: center;
+      width: 27px;
+      height: 27px;
+      border-radius: 9px;
+      background: rgba(91,229,255,.10);
+      color: var(--cyan);
+      font-size: 12px;
+    }
+
+    /* Secondary Product/Topic Image Space */
+    .topic-image {
+      position: relative;
+      overflow: hidden;
+      min-height: 470px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: #101a30;
+    }
+
+    .topic-image img {
+      width: 100%;
+      height: 470px;
+      object-fit: cover;
+    }
+
+    .topic-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, #091122 2%, rgba(9,17,34,.08) 75%);
+    }
+
+    .image-caption {
+      position: absolute;
+      z-index: 2;
+      left: 27px;
+      right: 27px;
+      bottom: 27px;
+    }
+
+    .image-caption strong {
+      display: block;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 27px;
+      line-height: 1.15;
+      letter-spacing: -.04em;
+    }
+
+    .image-caption span {
+      display: block;
+      margin-top: 9px;
+      color: #a9b8d3;
+      font-size: 13px;
+    }
+
+    .bonus-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 38px;
+    }
+
+    .bonus-heading p {
+      max-width: 430px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .bonus-label {
+      display: inline-flex;
+      padding: 9px 13px;
+      border-radius: 999px;
+      color: #062016;
+      background: var(--green);
+      font-size: 11px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .bonus-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 17px;
+    }
+
+    .bonus-card {
+      overflow: hidden;
+      border: 1px solid rgba(169,132,255,.18);
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(169,132,255,.14), transparent 42%),
+        rgba(17,24,45,.85);
+      transition: .25s ease;
+    }
+
+    .bonus-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(169,132,255,.42);
+    }
+
+    /* Bonus Image Space */
+    .bonus-image {
+      width: 100%;
+      height: 185px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      background:
+        linear-gradient(135deg, rgba(113,155,255,.13), rgba(169,132,255,.08)),
+        #0b1224;
+    }
+
+    .bonus-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .bonus-image img.contain {
+      object-fit: contain;
+      padding: 18px;
+    }
+
+    .bonus-content {
+      padding: 21px 22px 24px;
+    }
+
+    .bonus-number {
+      color: #b89eff;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .bonus-card h3 {
+      margin-top: 10px;
+      font-size: 18px;
+    }
+
+    .bonus-card p {
+      margin-top: 9px;
+      color: #8e9bb7;
+      font-size: 12px;
+    }
+
+    .offer-section {
+      padding: 85px 0;
+    }
+
+    .offer-box {
+      display: grid;
+      grid-template-columns: 1fr 290px;
+      align-items: center;
+      gap: 40px;
+      overflow: hidden;
+      padding: 52px;
+      border: 1px solid rgba(113,155,255,.31);
+      border-radius: 31px;
+      background:
+        radial-gradient(circle at 95% 0%, rgba(113,155,255,.24), transparent 36%),
+        radial-gradient(circle at 0% 100%, rgba(91,229,255,.08), transparent 32%),
+        linear-gradient(135deg, #142342, #0b1328);
+    }
+
+    .offer-copy h2 {
+      margin-top: 18px;
+    }
+
+    .offer-copy p {
+      max-width: 600px;
+      margin-top: 17px;
+      color: #aab8d1;
+      font-size: 14px;
+    }
+
+    .offer-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+      margin-top: 23px;
+    }
+
+    .offer-list span {
+      color: #cbd7ee;
+      font-size: 12px;
+    }
+
+    .price-card {
+      padding: 27px 22px;
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 23px;
+      background: rgba(4,9,21,.52);
+      text-align: center;
+    }
+
+    .regular-price {
+      color: #8290aa;
+      font-size: 15px;
+      text-decoration: line-through;
+    }
+
+    .sale-price {
+      margin: 4px 0;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 60px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -.07em;
+      background: linear-gradient(100deg, #fff, #65e9ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .price-note {
+      margin-bottom: 19px;
+      color: #8795b1;
+      font-size: 11px;
+    }
+
+    .price-card .btn {
+      width: 100%;
+      min-height: 51px;
+      padding: 0 10px;
+      font-size: 13px;
+    }
+
+    .secure-note {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 13px;
+      color: #7786a2;
+      font-size: 10px;
+    }
+
+    .faq-layout {
+      display: grid;
+      grid-template-columns: .78fr 1.22fr;
+      gap: 70px;
+      align-items: start;
+    }
+
+    .faq-intro p {
+      margin-top: 17px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 11px;
+    }
+
+    details {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,.025);
+    }
+
+    summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 20px;
+      cursor: pointer;
+      list-style: none;
+      color: #e8eeff;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "+";
+      color: #8caeff;
+      font-size: 21px;
+      font-weight: 400;
+    }
+
+    details[open] summary::after {
+      content: "−";
+    }
+
+    details p {
+      padding: 0 20px 20px;
+      color: #93a1bd;
+      font-size: 12px;
+    }
+
+    .footer {
+      margin-top: 35px;
+      padding: 32px 0 110px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-copy {
+      color: #697791;
+      font-size: 11px;
+    }
+
+    .mobile-cta {
+      display: none;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .topics-layout,
+      .faq-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-content {
+        text-align: center;
+      }
+
+      .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-actions,
+      .hero-note {
+        justify-content: center;
+      }
+
+      .product-image-card {
+        width: min(650px, 100%);
+        margin: 0 auto;
+      }
+
+      .topics-copy {
+        max-width: 650px;
+      }
+
+      .topic-image {
+        width: min(650px, 100%);
+      }
+
+      .offer-box {
+        grid-template-columns: 1fr;
+      }
+
+      .price-card {
+        width: min(320px, 100%);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        width: calc(100% - 28px);
+      }
+
+      .section {
+        padding: 68px 0;
+      }
+
+      .nav {
+        min-height: 62px;
+      }
+
+      .nav-right {
+        gap: 0;
+      }
+
+      .nav-right a:not(.nav-button) {
+        display: none;
+      }
+
+      h1 {
+        font-size: clamp(40px, 12vw, 61px);
+      }
+
+      .hero {
+        padding: 62px 0 48px;
+      }
+
+      .hero-description {
+        font-size: 15px;
+      }
+
+      .hero-actions {
+        display: grid;
+        width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .product-image-card {
+        min-height: 390px;
+        border-radius: 24px;
+        padding: 20px;
+      }
+
+      .product-image-card img {
+        max-height: 345px;
+      }
+
+      .value-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 23px 13px;
+      }
+
+      .value-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+      }
+
+      .value-item {
+        gap: 8px;
+      }
+
+      .value-item strong {
+        font-size: 11px;
+      }
+
+      .value-item span {
+        font-size: 9px;
+      }
+
+      .benefit-grid,
+      .bonus-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .benefit {
+        padding: 23px;
+      }
+
+      .bonus-heading {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .bonus-image {
+        height: 210px;
+      }
+
+      .topic-image,
+      .topic-image img {
+        min-height: 330px;
+        height: 330px;
+      }
+
+      .image-caption strong {
+        font-size: 23px;
+      }
+
+      .offer-section {
+        padding: 55px 0;
+      }
+
+      .offer-box {
+        padding: 30px 20px;
+        border-radius: 24px;
+        gap: 28px;
+      }
+
+      .sale-price {
+        font-size: 53px;
+      }
+
+      .price-card {
+        width: 100%;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .mobile-cta {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 100;
+        display: block;
+        padding: 10px 12px;
+        border-top: 1px solid rgba(255,255,255,.13);
+        background: rgba(5,8,18,.92);
+        backdrop-filter: blur(18px);
+      }
+
+      .mobile-cta a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 49px;
+        border-radius: 12px;
+        color: #06101c;
+        background: linear-gradient(110deg, #a7bcff, #5be5ff);
+        font-size: 13px;
+        font-weight: 900;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav">
+      <a href="#" class="logo">
+        <span class="logo-icon">⚙</span>
+        RoboFuture Kids
+      </a>
+
+      <div class="nav-right">
+        <a href="#included">Inside the Guide</a>
+        <a href="#bonuses">Bonuses</a>
+        <a
+          class="nav-button"
+          href="https://superprofile.bio/vp/robofuture-kids-ai-robotics-guide"
+        >
+          Get Access →
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+
+        <div class="hero-content">
+          <span class="eyebrow">Future-ready learning for curious kids</span>
+
+          <h1>
+            Help your child
+            <span class="gradient">discover the future.</span>
+          </h1>
+
+          <p class="hero-description">
+            Introduce your child to the exciting world of artificial intelligence,
+            robotics, electronics and STEM with RoboFuture Kids — a simple,
+            engaging digital guide created to spark curiosity and creative thinking.
+          </p>
+
+          <div class="hero-actions">
+            <a
+              class="btn btn-primary"
+              href="https://superprofile.bio/vp/robofuture-kids-ai-robotics-guide"
+            >
+              Get RoboFuture Kids
+              <span>↗</span>
+            </a>
+
+            <a class="btn btn-secondary" href="#included">
+              Explore What's Inside
+              <span>↓</span>
+            </a>
+          </div>
+
+          <div class="hero-note">
+            <span><b class="check">✓</b> Beginner-friendly</span>
+            <span><b class="check">✓</b> Digital access</span>
+            <span><b class="check">✓</b> Parent-guided learning</span>
+          </div>
+        </div>
+
+        <!-- MAIN PRODUCT IMAGE SPACE -->
+        <div class="product-image-card">
+          <span class="image-placeholder-label">Main Product Preview</span>
+
+          <!-- Replace this image with your GitHub product cover -->
+          <img
+            src="images/robofuture-cover.jpg"
+            alt="RoboFuture Kids AI and Robotics Guide cover"
+          />
+
+          <div class="image-bottom-label">
+            AI • Robotics • Electronics • STEM
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Value strip -->
+    <section class="value-strip">
+      <div class="container value-grid">
+
+        <div class="value-item">
+          <div class="value-icon">🤖</div>
+          <div>
+            <strong>AI & Robotics</strong>
+            <span>Explore modern technology</span>
+          </div>
+        </div>
+
+        <div class="value-item">
+          <div class="value-icon">🧠</div>
+          <div>
+            <strong>Creative Thinking</strong>
+            <span>Learn through curiosity</span>
+          </div>
+        </div>
+
+        <div class="value-item">
+          <div class="value-icon">⚡</div>
+          <div>
+            <strong>STEM Concepts</strong>
+            <span>Build early awareness</span>
+          </div>
+        </div>
+
+        <div class="value-item">
+          <div class="value-icon">📚</div>
+          <div>
+            <strong>Extra Bonuses</strong>
+            <span>Additional learning resources</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="section" id="included">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="eyebrow">Why choose RoboFuture Kids?</span>
+
+          <h2>
+            Turn curiosity into
+            <span class="gradient">creative exploration.</span>
+          </h2>
+
+          <p>
+            Give your child an introduction to the technologies shaping the
+            modern world while encouraging questions, imagination and problem-solving.
+          </p>
+        </div>
+
+        <div class="benefit-grid">
+
+          <article class="benefit">
+            <div class="benefit-icon">🤖</div>
+            <h3>Discover AI & Robotics</h3>
+            <p>
+              Learn the basic ideas behind artificial intelligence, robots,
+              machines and smart technology.
+            </p>
+          </article>
+
+          <article class="benefit">
+            <div class="benefit-icon">🔧</div>
+            <h3>Understand Technology</h3>
+            <p>
+              Explore motors, sensors, electronics and other components used
+              in exciting technology projects.
+            </p>
+          </article>
+
+          <article class="benefit">
+            <div class="benefit-icon">💡</div>
+            <h3>Build Creative Thinking</h3>
+            <p>
+              Encourage children to ask questions, imagine solutions and
+              understand how things work.
+            </p>
+          </article>
+
+          <article class="benefit">
+            <div class="benefit-icon">🧪</div>
+            <h3>Explore STEM Concepts</h3>
+            <p>
+              Connect science, technology, engineering and mathematics through
+              simple and relatable examples.
+            </p>
+          </article>
+
+          <article class="benefit">
+            <div class="benefit-icon">👨‍👩‍👧</div>
+            <h3>Parent-Friendly Resource</h3>
+            <p>
+              A useful starting point for parents who want to introduce
+              technology without complicated technical language.
+            </p>
+          </article>
+
+          <article class="benefit">
+            <div class="benefit-icon">🚀</div>
+            <h3>Future-Ready Foundation</h3>
+            <p>
+              Help children become familiar with the ideas and technologies
+              that influence the future.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Topics -->
+    <section class="section topics-section">
+      <div class="container topics-layout">
+
+        <div class="topics-copy">
+          <span class="eyebrow">Inside the learning journey</span>
+
+          <h2>
+            Big technology ideas,
+            <span class="gradient-purple">made approachable.</span>
+          </h2>
+
+          <p>
+            RoboFuture Kids covers foundational concepts in an easy-to-explore
+            format. Children can learn at their own pace with guidance from parents
+            or educators.
+          </p>
+
+          <div class="topics-list">
+            <div class="topic">
+              <span class="topic-check">✓</span>
+              Introduction to Artificial Intelligence
+            </div>
+
+            <div class="topic">
+              <span class="topic-check">✓</span>
+              Robotics and Smart Machines
+            </div>
+
+            <div class="topic">
+              <span class="topic-check">✓</span>
+              Sensors, Motors and Electronics
+            </div>
+
+            <div class="topic">
+              <span class="topic-check">✓</span>
+              Arduino and Technology Projects
+            </div>
+
+            <div class="topic">
+              <span class="topic-check">✓</span>
+              Drones, Automation and STEM
+            </div>
+
+            <div class="topic">
+              <span class="topic-check">✓</span>
+              Creative Exploration and Problem-Solving
+            </div>
+          </div>
+        </div>
+
+        <!-- RELATED IMAGE SPACE -->
+        <div class="topic-image">
+          <!-- Replace with your robotics-related image -->
+          <img
+            src="images/robotics-learning.jpg"
+            alt="Robotics and technology learning"
+          />
+
+          <div class="image-caption">
+            <strong>Learn technology. Imagine possibilities.</strong>
+            <span>
+              A beginner-friendly starting point for future-focused learning.
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Bonuses -->
+    <section class="section" id="bonuses">
+      <div class="container">
+
+        <div class="bonus-heading">
+          <div>
+            <span class="eyebrow">Included with your purchase</span>
+
+            <h2>
+              Extra resources.
+              <span class="gradient">More ways to learn.</span>
+            </h2>
+          </div>
+
+          <div>
+            <span class="bonus-label">✦ BONUS RESOURCES INCLUDED</span>
+            <p style="margin-top: 13px;">
+              Along with RoboFuture Kids, receive additional educational and
+              printable resources for early learning and creativity.
+            </p>
+          </div>
+        </div>
+
+        <div class="bonus-grid">
+
+          <!-- Bonus 1 -->
+          <article class="bonus-card">
+            <div class="bonus-image">
+              <img
+                src="images/bonus-colouring.jpg"
+                alt="Kids Colouring Bundle"
+              />
+            </div>
+            <div class="bonus-content">
+              <div class="bonus-number">Bonus 01</div>
+              <h3>Kids Colouring Bundle</h3>
+              <p>
+                Creative colouring activities for imagination and screen-free engagement.
+              </p>
+            </div>
+          </article>
+
+          <!-- Bonus 2 -->
+          <article class="bonus-card">
+            <div class="bonus-image">
+              <img
+                src="images/bonus-preschool.jpg"
+                alt="Pre-School Worksheet Bundle"
+              />
+            </div>
+            <div class="bonus-content">
+              <div class="bonus-number">Bonus 02</div>
+              <h3>Pre-School Worksheet Bundle</h3>
+              <p>
+                Simple worksheets for early learning and practice.
+              </p>
+            </div>
+          </article>
+
+          <!-- Bonus 3 -->
+          <article class="bonus-card">
+            <div class="bonus-image">
+              <img
+                src="images/bonus-alphabet.jpg"
+                alt="Alphabet Toddler Workbook"
+              />
+            </div>
+            <div class="bonus-content">
+              <div class="bonus-number">Bonus 03</div>
+              <h3>Alphabet Toddler Workbook</h3>
+              <p>
+                Beginner-friendly alphabet practice resources.
+              </p>
+            </div>
+          </article>
+
+          <!-- Bonus 4 -->
+          <article class="bonus-card">
+            <div class="bonus-image">
+              <img
+                src="images/bonus-workbook-2.jpg"
+                alt="Toddler Workbook 2"
+              />
+            </div>
+            <div class="bonus-content">
+              <div class="bonus-number">Bonus 04</div>
+              <h3>Toddler Workbook 2</h3>
+              <p>
+                Additional activities for young learners.
+              </p>
+            </div>
+          </article>
+
+          <!-- Bonus 5 -->
+          <article class="bonus-card">
+            <div class="bonus-image">
+              <img
+                src="images/bonus-workbook-3.jpg"
+                alt="Toddler Workbook 3"
+              />
+            </div>
+            <div class="bonus-content">
+              <div class="bonus-number">Bonus 05</div>
+              <h3>Toddler Workbook 3</h3>
+              <p>
+                More practice pages for continued learning.
+              </p>
+            </div>
+          </article>
+
+          <!-- Bonus 6 -->
+          <article class="bonus-card">
+            <div class="bonus-image">
+              <img
+                src="images/bonus-workbook-4.jpg"
+                alt="Toddler Workbook 4"
+              />
+            </div>
+            <div class="bonus-content">
+              <div class="bonus-number">Bonus 06</div>
+              <h3>Toddler Workbook 4</h3>
+              <p>
+                Extra creative activities for early development.
+              </p>
+            </div>
+          </article>
+
+          <!-- Bonus 7 -->
+          <article class="bonus-card">
+            <div class="bonus-image">
+              <img
+                src="images/bonus-worksheet-5.jpg"
+                alt="Toddler Worksheet 5"
+              />
+            </div>
+            <div class="bonus-content">
+              <div class="bonus-number">Bonus 07</div>
+              <h3>Toddler Worksheet 5</h3>
+              <p>
+                Printable worksheet resources for additional practice.
+              </p>
+            </div>
+          </article>
+
+          <!-- Bonus 8 -->
+          <article class="bonus-card">
+            <div class="bonus-image">
+              <img
+                class="contain"
+                src="images/bonus-learning.jpg"
+                alt="Digital Learning Resources"
+              />
+            </div>
+            <div class="bonus-content">
+              <div class="bonus-number">Bonus 08</div>
+              <h3>Digital Learning Resources</h3>
+              <p>
+                Access your purchased educational resources digitally.
+              </p>
+            </div>
+          </article>
+
+          <!-- Bonus 9 -->
+          <article class="bonus-card">
+            <div class="bonus-image">
+              <img
+                class="contain"
+                src="images/robofuture-cover.jpg"
+                alt="Parent Guided Learning"
+              />
+            </div>
+            <div class="bonus-content">
+              <div class="bonus-number">Bonus 09</div>
+              <h3>Parent-Guided Learning</h3>
+              <p>
+                Use the resources together with your child for a better experience.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Offer -->
+    <section class="offer-section">
+      <div class="container">
+        <div class="offer-box">
+
+          <div class="offer-copy">
+            <span class="eyebrow">Start the learning journey</span>
+
+            <h2>
+              Give your child a fun introduction to
+              <span class="gradient">AI & Robotics.</span>
+            </h2>
+
+            <p>
+              Get the RoboFuture Kids guide plus the listed educational bonus
+              resources and begin exploring future-focused concepts at home.
+            </p>
+
+            <div class="offer-list">
+              <span>✓ Main AI & Robotics guide</span>
+              <span>✓ Educational bonus bundles</span>
+              <span>✓ Digital delivery</span>
+              <span>✓ Beginner-friendly content</span>
+            </div>
+          </div>
+
+          <div class="price-card">
+            <div class="regular-price">Regular Value ₹1,999</div>
+            <div class="sale-price">₹299</div>
+            <div class="price-note">One-time digital access</div>
+
+            <a
+              class="btn btn-primary"
+              href="https://superprofile.bio/vp/robofuture-kids-ai-robotics-guide"
+            >
+              Buy Now
+              <span>↗</span>
+            </a>
+
+            <div class="secure-note">
+              🔒 Secure checkout via Super Profile
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="container faq-layout">
+
+        <div class="faq-intro">
+          <span class="eyebrow">Frequently asked questions</span>
+
+          <h2>
+            Before you
+            <span class="gradient">get started.</span>
+          </h2>
+
+          <p>
+            Here are answers to common questions about RoboFuture Kids and
+            the included resources.
+          </p>
+        </div>
+
+        <div class="faq-list">
+
+          <details>
+            <summary>What is RoboFuture Kids?</summary>
+            <p>
+              RoboFuture Kids is a digital educational guide introducing children
+              to AI, robotics, electronics, STEM and related technology concepts.
+            </p>
+          </details>
+
+          <details>
+            <summary>Who can use this resource?</summary>
+            <p>
+              It is designed for parents, educators and children who are curious
+              about technology. Parents should guide children according to their
+              age and ability.
+            </p>
+          </details>
+
+          <details>
+            <summary>What bonuses are included?</summary>
+            <p>
+              The bonus collection includes the Kids Colouring Bundle, Pre-School
+              Worksheet Bundle, Alphabet Toddler Workbook and additional toddler
+              workbooks and worksheets.
+            </p>
+          </details>
+
+          <details>
+            <summary>Is this a physical product?</summary>
+            <p>
+              No. RoboFuture Kids is a digital product. Delivery and access
+              instructions are provided after purchase through the checkout platform.
+            </p>
+          </details>
+
+          <details>
+            <summary>Do I need robotics equipment?</summary>
+            <p>
+              No equipment is required just to explore the guide. Any practical
+              hardware activity should be age-appropriate and supervised by an adult.
+            </p>
+          </details>
+
+          <details>
+            <summary>How do I purchase it?</summary>
+            <p>
+              Click any Buy Now button and complete the purchase through the
+              Super Profile checkout page.
+            </p>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="logo">
+        <span class="logo-icon">⚙</span>
+        RoboFuture Kids
+      </div>
+
+      <div class="footer-copy">
+        © 2026 RoboFuture Kids. Digital educational resources.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Sticky CTA -->
+  <div class="mobile-cta">
+    <a href="https://superprofile.bio/vp/robofuture-kids-ai-robotics-guide">
+      🚀 Get RoboFuture Kids for ₹299 →
+    </a>
+  </div>
+
+</body>
+</html>
